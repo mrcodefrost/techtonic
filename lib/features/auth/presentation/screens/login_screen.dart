@@ -1,36 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:techtonic_blog_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:techtonic_blog_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:techtonic_blog_app/features/core/theme/app_palette.dart';
 
 import '../widgets/auth_textfield.dart';
 
-class SignUpScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   static route() => MaterialPageRoute(builder: (context) => const SignUpScreen());
-  const SignUpScreen({super.key});
+
+  const LoginScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    nameController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Form(
@@ -39,15 +37,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Sign Up',
+                'Sign In',
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 30),
-              AuthTextField(hintText: 'Name', controller: nameController),
-              const SizedBox(height: 15),
               AuthTextField(
                 hintText: 'Email',
                 controller: emailController,
@@ -60,20 +56,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               const SizedBox(height: 20),
               const AuthGradientButton(
-                buttonText: 'Sign Up',
+                buttonText: 'Sign In',
               ),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(context, SignUpScreen.route());
                 },
                 child: RichText(
                   text: TextSpan(
-                      text: 'Already have an account ? ',
+                      text: 'Don\'t have an account ? ',
                       style: Theme.of(context).textTheme.titleMedium,
                       children: [
                         TextSpan(
-                          text: 'Sign In',
+                          text: 'Sign Up',
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 color: AppPalette.gradient2,
                                 fontWeight: FontWeight.bold,
