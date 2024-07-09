@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:techtonic_blog_app/features/core/theme/app_palette.dart';
 
+import '../bloc/auth_bloc.dart';
 import '../widgets/auth_textfield.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -59,8 +61,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 isObscureText: true,
               ),
               const SizedBox(height: 20),
-              const AuthGradientButton(
+              AuthGradientButton(
                 buttonText: 'Sign Up',
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    context.read<AuthBloc>().add(AuthSignUp(
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
+                        name: nameController.text.trim()));
+                  }
+                },
               ),
               const SizedBox(height: 20),
               GestureDetector(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:techtonic_blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:techtonic_blog_app/features/core/theme/app_palette.dart';
@@ -55,8 +57,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 isObscureText: true,
               ),
               const SizedBox(height: 20),
-              const AuthGradientButton(
+              AuthGradientButton(
                 buttonText: 'Sign In',
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {}
+                },
               ),
               const SizedBox(height: 20),
               GestureDetector(
