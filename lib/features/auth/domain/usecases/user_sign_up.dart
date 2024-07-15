@@ -1,20 +1,23 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:techtonic_blog_app/features/core/error/failures.dart';
-import 'package:techtonic_blog_app/features/core/usecase/usecase.dart';
+import 'package:techtonic_blog_app/features/auth/domain/entities/user.dart';
 
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecase/usecase.dart';
 import '../repository/auth_repository.dart';
 
-class UserSignUp implements UseCase<String, UserSignUpParams> {
+class UserSignUp implements UseCase<User, UserSignUpParams> {
   final AuthRepository authRepository;
   const UserSignUp(this.authRepository);
 
   @override
-  Future<Either<Failure, String>> call(UserSignUpParams params) async {
+  Future<Either<Failure, User>> call(UserSignUpParams params) async {
     return await authRepository.signUpWithEmailPassword(
         name: params.name, email: params.email, password: params.password);
   }
 }
 
+// 3 arguments were required in the call function of UserSignUp,
+// to pass those, a single class has been created - UserSignUpParams
 class UserSignUpParams {
   final String name;
   final String email;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:techtonic_blog_app/features/core/theme/app_palette.dart';
+import 'package:techtonic_blog_app/core/theme/app_palette.dart';
 
 class AppTheme {
   static _border([Color color = AppPalette.borderColor]) => OutlineInputBorder(
@@ -15,7 +15,7 @@ class AppTheme {
       backgroundColor: AppPalette.backgroundColor,
     ),
     chipTheme: const ChipThemeData(
-      color: MaterialStatePropertyAll(
+      color: WidgetStatePropertyAll(
         AppPalette.backgroundColor,
       ),
       side: BorderSide.none,
