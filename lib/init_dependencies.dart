@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:techtonic_blog_app/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:techtonic_blog_app/features/auth/data/repository/auth_repository_impl.dart';
+import 'package:techtonic_blog_app/features/auth/domain/usecases/current_user.dart';
 import 'package:techtonic_blog_app/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 
@@ -22,33 +23,47 @@ Future<void> initDependencies() async {
 }
 
 void _initAuth() {
-  serviceLocator.registerFactory<AuthRemoteDataSource>(
-    () => AuthRemoteDataSourceImpl(
-      serviceLocator(),
-    ),
-  );
+  // Broadly only registerLazySingleton and register factor are the only
+  // two methods required to implement the get it dependencies
 
-  serviceLocator.registerFactory<AuthRepository>(
-    () => AuthRepositoryImpl(
-      serviceLocator(),
-    ),
-  );
+  // Datasource
+  serviceLocator
+    ..registerFactory<AuthRemoteDataSource>(
+      () => AuthRemoteDataSourceImpl(
+        serviceLocator(),
+      ),
+    )
 
-  serviceLocator.registerFactory(
-    () => UserSignUp(
-      serviceLocator(),
-    ),
-  );
-  serviceLocator.registerFactory(
-    () => UserLogin(
-      serviceLocator(),
-    ),
-  );
+    // Repository
+    ..registerFactory<AuthRepository>(
+      () => AuthRepositoryImpl(
+        serviceLocator(),
+      ),
+    )
 
-  serviceLocator.registerLazySingleton(
-    () => AuthBloc(
-      userSignUp: serviceLocator(),
-      userLogin: serviceLocator(),
-    ),
-  );
+    // Use cases
+    ..registerFactory(
+      () => UserSignUp(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => UserLogin(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => CurrentUser(
+        serviceLocator(),
+      ),
+    )
+
+    // Bloc
+    ..registerLazySingleton(
+      () => AuthBloc(
+        userSignUp: serviceLocator(),
+        userLogin: serviceLocator(),
+        currentUser: serviceLocator(),
+      ),
+    );
 }
