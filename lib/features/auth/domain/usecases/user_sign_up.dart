@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:techtonic_blog_app/features/auth/domain/entities/user.dart';
 
+import '../../../../core/common/entities/user.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../repository/auth_repository.dart';

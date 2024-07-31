@@ -3,9 +3,9 @@ import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 import 'package:techtonic_blog_app/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:techtonic_blog_app/features/auth/domain/repository/auth_repository.dart';
 
+import '../../../../core/common/entities/user.dart';
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
-import '../../domain/entities/user.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;

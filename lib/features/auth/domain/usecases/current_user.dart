@@ -1,10 +1,9 @@
-import 'package:fpdart/src/either.dart';
-
+import 'package:fpdart/fpdart.dart';
 import 'package:techtonic_blog_app/core/error/failures.dart';
 import 'package:techtonic_blog_app/features/auth/domain/repository/auth_repository.dart';
 
+import '../../../../core/common/entities/user.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../entities/user.dart';
 
 class CurrentUser implements UseCase<User, NoParams> {
   final AuthRepository authRepository;
