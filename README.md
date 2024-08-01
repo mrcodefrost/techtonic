@@ -1,16 +1,20 @@
- techtonic_blog_app
+## Techtonic Blog App 
+---
 
-A new Flutter project.
+- **Blog App**: A feature-rich mobile application built using Flutter that serves as a platform for users to create, read, and interact with blog posts.
 
-## Getting Started
+### Features
 
-This project is a starting point for a Flutter application.
+- **Clean Architecture**: The app adheres to clean architecture principles, ensuring a modular, maintainable, and scalable codebase.
 
-A few resources to get you started if this is your first Flutter project:
+- **Functional Programming with `fp_dart`**: Utilizes the `fp_dart` package to incorporate functional programming paradigms, enhancing code reliability and reducing side effects.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Dependency Injection with `get_it`**: Employs the `get_it` package for efficient dependency injection, promoting loose coupling and testability within the application.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Local Storage with Hive**: Integrates **Hive**, a lightweight and blazing-fast key-value database, for local data persistence, offering an offline-first experience to users.
+
+- **Online Database and Authentication with Supabase**: Leverages **Supabase** for robust online database management and secure user authentication, providing real-time data synchronization and user management features.
+
+This blog app demonstrates the synergy of clean architecture, functional programming, dependency injection, and modern data storage techniques, offering a comprehensive and performant solution for mobile blogging.
+
+
