@@ -1,7 +1,6 @@
-## Techtonic Blog App 
----
+## Techtonic Blog App
 
-- **Blog App**: A feature-rich mobile application built using Flutter that serves as a platform for users to create, read, and interact with blog posts.
+**Blog App** : A feature-rich mobile application built using Flutter that serves as a platform for users to create, read, and interact with blog posts.
 
 ### Features
 
@@ -17,4 +16,10 @@
 
 This blog app demonstrates the synergy of clean architecture, functional programming, dependency injection, and modern data storage techniques, offering a comprehensive and performant solution for mobile blogging.
 
+### Tech Stack
 
+- Flutter - UI
+- Supabase - online DB & Auth
+- Hive - local DB
+- Get It - dependency injection
+- FP Dart - functional programming
