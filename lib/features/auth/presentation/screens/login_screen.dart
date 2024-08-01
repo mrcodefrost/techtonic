@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
           },
           builder: (context, state) {
             if (state is AuthLoading) {
-              return const Loader();
+              return const Center(child: Loader());
             }
             return Form(
               key: formKey,

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:techtonic_blog_app/core/common/cubits/app_user/app_user_cubit.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:techtonic_blog_app/features/blog/presentation/pages/blog_screen.dart';
 import 'package:techtonic_blog_app/init_dependencies.dart';
 
 import 'core/theme/theme.dart';
@@ -43,11 +44,7 @@ class _MyAppState extends State<MyApp> {
         return state is AppUserLoggedIn;
       }, builder: (context, isLoggedIn) {
         if (isLoggedIn) {
-          return const Scaffold(
-            body: Center(
-              child: Text('Logged in !'),
-            ),
-          );
+          return const BlogScreen();
         }
         return const LoginScreen();
       }),
