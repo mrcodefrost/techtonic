@@ -7,17 +7,21 @@ import 'package:techtonic_blog_app/features/blog/presentation/pages/blog_screen.
 import 'package:techtonic_blog_app/init_dependencies.dart';
 
 import 'core/theme/theme.dart';
+import 'features/blog/presentation/bloc/blog_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // already present in runApp but since we calling it before
   await initDependencies();
-  runApp(MultiBlocProvider(
-    providers: [
-      BlocProvider(create: (_) => serviceLocator<AppUserCubit>()),
-      BlocProvider(create: (_) => serviceLocator<AuthBloc>())
-    ],
-    child: const MyApp(),
-  ));
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => serviceLocator<AppUserCubit>()),
+        BlocProvider(create: (_) => serviceLocator<AuthBloc>()),
+        BlocProvider(create: (_) => serviceLocator<BlogBloc>()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
