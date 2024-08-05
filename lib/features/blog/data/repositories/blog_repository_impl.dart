@@ -9,9 +9,19 @@ import 'package:techtonic_blog_app/features/blog/domain/entities/blog.dart';
 import 'package:techtonic_blog_app/features/blog/domain/repositories/blog_repository.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../../core/constants/constants.dart';
+import '../../../../core/network/connection_checker.dart';
+import '../datasources/blog_local_data_source.dart';
+
 class BlogRepositoryImpl implements BlogRepository {
   final BlogRemoteDataSource blogRemoteDataSource;
-  BlogRepositoryImpl(this.blogRemoteDataSource);
+  final BlogLocalDataSource blogLocalDataSource;
+  final ConnectionChecker connectionChecker;
+  BlogRepositoryImpl(
+    this.blogRemoteDataSource,
+    this.blogLocalDataSource,
+    this.connectionChecker,
+  );
 
   @override
   Future<Either<Failure, Blog>> uploadBlog({
@@ -22,6 +32,9 @@ class BlogRepositoryImpl implements BlogRepository {
     required List<String> topics,
   }) async {
     try {
+      if (!await connectionChecker.isConnected) {
+        return left(Failure(Constants.noConnectionErrorMessage));
+      }
       BlogModel blogModel = BlogModel(
         id: const Uuid().v1(), // creates random id based on current time
         posterId: posterId,
@@ -49,7 +62,13 @@ class BlogRepositoryImpl implements BlogRepository {
   @override
   Future<Either<Failure, List<Blog>>> getAllBlogs() async {
     try {
+      if (!await connectionChecker.isConnected) {
+        final blogs = blogLocalDataSource.loadBlogs();
+        return right(blogs);
+      }
+
       final blogs = await blogRemoteDataSource.getAllBlogs();
+      blogLocalDataSource.uploadLocalBlogs(blogs: blogs);
       return right(blogs);
     } on ServerException catch (e) {
       return left(Failure(e.message));

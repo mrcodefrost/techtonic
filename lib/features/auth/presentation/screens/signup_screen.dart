@@ -5,6 +5,7 @@ import 'package:techtonic_blog_app/features/auth/presentation/widgets/auth_gradi
 
 import '../../../../core/common/widgets/loader.dart';
 import '../../../../core/theme/app_palette.dart';
+import '../../../blog/presentation/pages/blog_screen.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/auth_textfield.dart';
 
@@ -43,6 +44,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               listener: (context, state) {
                 if (state is AuthFailure) {
                   showSnackBar(context, state.message);
+                } else if (state is AuthSuccess) {
+                  Navigator.pushAndRemoveUntil(context, BlogScreen.route(), (route) => false);
                 }
               },
               builder: (context, state) {

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:techtonic_blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
+import 'package:techtonic_blog_app/features/blog/presentation/pages/blog_screen.dart';
 
 import '../../../../core/common/widgets/loader.dart';
 import '../../../../core/theme/app_palette.dart';
@@ -39,6 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
           listener: (context, state) {
             if (state is AuthFailure) {
               showSnackBar(context, state.message);
+            } else if (state is AuthSuccess) {
+              Navigator.pushAndRemoveUntil(context, BlogScreen.route(), (route) => false);
             }
           },
           builder: (context, state) {

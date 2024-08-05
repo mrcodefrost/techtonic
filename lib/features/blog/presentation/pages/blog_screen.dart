@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:techtonic_blog_app/core/common/widgets/loader.dart';
+import 'package:techtonic_blog_app/core/theme/app_palette.dart';
 import 'package:techtonic_blog_app/core/utils/show_snackbar.dart';
 import 'package:techtonic_blog_app/features/blog/domain/entities/blog.dart';
 import 'package:techtonic_blog_app/features/blog/domain/entities/blog.dart';
@@ -54,7 +55,10 @@ class _BlogScreenState extends State<BlogScreen> {
                 itemCount: state.blogs.length,
                 itemBuilder: (context, index) {
                   final blog = state.blogs[index];
-                  return BlogCard(blog: blog, color: Colors.red);
+                  return BlogCard(
+                    blog: blog,
+                    color: index % 3 == 0 ? AppPalette.gradient1 : AppPalette.gradient2,
+                  );
                 });
           }
           return const SizedBox();
