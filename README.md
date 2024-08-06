@@ -28,9 +28,36 @@ This blog app demonstrates the synergy of clean architecture, functional program
 
 ### Installation
 
-    1. Clone the repository to your local machine:
+1. Clone the repository to your local machine:
 
-```bash
-  git clone https://github.com/mrcodefrost/techtonic.git
-```
+   ```bash
+   git clone https://github.com/mrcodefrost/techtonic.git
+   ```
 
+2. Install dependencies by running this command in IDE terminal: 
+
+   ```bash
+   flutter pub get
+   ```
+   
+3. Set up Supabase
+
+   If you haven't already, create a project on [supabase](https://supabase.com).
+   If required, Refer to the [Supabase flutter plugin docs](https://pub.dev/packages/supabase_flutter)
+
+   ```bash
+   flutter pub get
+   ```
+
+4. Create a directory "secrets" in lib/core/.
+
+5. In lib/core/secrets add "app_secrets.dart" with the following file content.
+Keys can be found in your supabase project config page.
+
+   ```dart
+   class AppSecrets {
+   static const String supabaseUrl = 'Insert your supabase url here';
+   static const String supabaseAnonKey =
+   'Insert your supabase anon key here';
+   }
+   ```
