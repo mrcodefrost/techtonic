@@ -40,18 +40,13 @@ This blog app demonstrates the synergy of clean architecture, functional program
    flutter pub get
    ```
    
-3. Set up Supabase
+3. Set up Supabase.
+If you haven't already, create a project on [supabase](https://supabase.com).
+If required, Refer to the [Supabase flutter plugin docs](https://pub.dev/packages/supabase_flutter)
 
-   If you haven't already, create a project on [supabase](https://supabase.com).
-   If required, Refer to the [Supabase flutter plugin docs](https://pub.dev/packages/supabase_flutter)
+4. Create a directory "secrets" in lib/core/
 
-   ```bash
-   flutter pub get
-   ```
-
-4. Create a directory "secrets" in lib/core/.
-
-5. In lib/core/secrets add "app_secrets.dart" with the following file content.
+5. In "lib/core/secrets" add "app_secrets.dart" with the following file content.
 Keys can be found in your supabase project config page.
 
    ```dart
