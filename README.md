@@ -23,3 +23,14 @@ This blog app demonstrates the synergy of clean architecture, functional program
 - Hive - local DB
 - Get It - dependency injection
 - FP Dart - functional programming
+
+
+
+### Installation
+
+    1. Clone the repository to your local machine:
+
+```bash
+  git clone https://github.com/mrcodefrost/techtonic.git
+```
+
